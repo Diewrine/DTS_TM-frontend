@@ -148,7 +148,7 @@ class Members extends Component {
               footer={null}
             >
               <h3 style={{ marginLeft: "25%" }}>
-                {this.state.activeItem2.phone}
+                {this.state.activeItem2.firstname}
               </h3>
               <h5> Modifier les paramètres de ce membre ! </h5>
 

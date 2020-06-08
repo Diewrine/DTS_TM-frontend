@@ -1,10 +1,13 @@
+// For member
 export const GET_MEMBERS = "GET_MEMBERS";
 export const DELETE_MEMBER = "DELETE_MEMBER";
 export const ADD_MEMBER = "ADD_MEMBER";
 export const UPDATE_MEMBER = "UPDATE_MEMBER";
 
-export const GET_ERRORS = "GET_ERRORS";
-export const CREATE_MESSAGE = "CREATE_MESSAGE";
+// For subscriber
+export const ADD_SUBSCRIBER = "ADD_SUBSCRIBER";
+export const GET_SUBSCRIBERS = "GET_SUBSCRIBERS";
+export const DELETE_SUBSCRIBER = "DELETE_SUBSCRIBER";
 
 // For authentification
 export const USER_LOADIND = "USER_LOADIND";
@@ -18,3 +21,7 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 
 export const PASSWORD_UPDATED = "PASSWORD_UPDATED";
 export const PASSWORD_FAILED = "PASSWORD_FAILED";
+
+// For error and message
+export const GET_ERRORS = "GET_ERRORS";
+export const CREATE_MESSAGE = "CREATE_MESSAGE";

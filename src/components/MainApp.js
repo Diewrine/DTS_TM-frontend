@@ -3,9 +3,41 @@ import sample from "../assets/img/sample.jpg";
 import sample1 from "../assets/img/sample2.jfif";
 import Portfolio from "./Portfolio";
 import Login from "./Login";
+import SlideImage from "./SlideImage";
+
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addSubscriber } from "../actions/subscriberActions";
 
 class MainApp extends Component {
+  state = {
+    firstname: "",
+    lastname: "",
+    address: "",
+    phone: "",
+  };
+
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+  static propTypes = {
+    addSubscriber: PropTypes.func.isRequired,
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { firstname, lastname, address, phone } = this.state;
+    const subscriber = { firstname, lastname, address, phone };
+    this.props.addSubscriber(subscriber);
+    this.setState({
+      firstname: "",
+      lastname: "",
+      address: "",
+      phone: "",
+    });
+  };
+
   render() {
+    const { firstname, lastname, address, phone } = this.state;
     const portfolioLinks = [
       {
         id: "1",
@@ -59,7 +91,7 @@ class MainApp extends Component {
               <ul className="navbar-nav text-uppercase ml-auto">
                 <li className="nav-item">
                   <a className="nav-link js-scroll-trigger" href="#services">
-                    Evenements
+                    Activités
                   </a>
                 </li>
                 <li className="nav-item">
@@ -115,6 +147,14 @@ class MainApp extends Component {
                 </h3>
               </div>
             </div>
+
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <SlideImage />
+                <hr />
+              </div>
+            </div>
+
             <div className="row text-center">
               <div className="col-md-4">
                 <span className="fa-stack fa-4x">
@@ -477,9 +517,129 @@ class MainApp extends Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                  style={{ marginBottom: "5%" }}
+                >
+                  Réglement intérieur du daara
+                </button>
+
+                <div
+                  className="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog modal-dialog-scrollable">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">
+                          Modal title
+                        </h5>
+                        <button
+                          type="button"
+                          className="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+                      <div className="modal-body">
+                        Cras mattis consectetur purus sit amet fermentum. Cras
+                        justo odio, dapibus ac facilisis in, egestas eget quam.
+                        Morbi leo risus, porta ac consectetur ac, vestibulum at
+                        eros. Praesent commodo cursus magna, vel scelerisque
+                        nisl consectetur et. Vivamus sagittis lacus vel augue
+                        laoreet rutrum faucibus dolor auctor. Aenean lacinia
+                        bibendum nulla sed consectetur. Praesent commodo cursus
+                        magna, vel scelerisque nisl consectetur et. Donec sed
+                        odio dui. Donec ullamcorper nulla non metus auctor
+                        fringilla. Cras mattis consectetur purus sit amet
+                        fermentum. Cras justo odio, dapibus ac facilisis in,
+                        egestas eget quam. Morbi leo risus, porta ac consectetur
+                        ac, vestibulum at eros. Praesent commodo cursus magna,
+                        vel scelerisque nisl consectetur et. Vivamus sagittis
+                        lacus vel augue laoreet rutrum faucibus dolor auctor.
+                        Aenean lacinia bibendum nulla sed consectetur. Praesent
+                        commodo cursus magna, vel scelerisque nisl consectetur
+                        et. Donec sed odio dui. Donec ullamcorper nulla non
+                        metus auctor fringilla. Cras mattis consectetur purus
+                        sit amet fermentum. Cras justo odio, dapibus ac
+                        facilisis in, egestas eget quam. Morbi leo risus, porta
+                        ac consectetur ac, vestibulum at eros. Praesent commodo
+                        cursus magna, vel scelerisque nisl consectetur et.
+                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus
+                        dolor auctor. Aenean lacinia bibendum nulla sed
+                        consectetur. Praesent commodo cursus magna, vel
+                        scelerisque nisl consectetur et. Donec sed odio dui.
+                        Donec ullamcorper nulla non metus auctor fringilla. Cras
+                        mattis consectetur purus sit amet fermentum. Cras justo
+                        odio, dapibus ac facilisis in, egestas eget quam. Morbi
+                        leo risus, porta ac consectetur ac, vestibulum at eros.
+                        Praesent commodo cursus magna, vel scelerisque nisl
+                        consectetur et. Vivamus sagittis lacus vel augue laoreet
+                        rutrum faucibus dolor auctor. Aenean lacinia bibendum
+                        nulla sed consectetur. Praesent commodo cursus magna,
+                        vel scelerisque nisl consectetur et. Donec sed odio dui.
+                        Donec ullamcorper nulla non metus auctor fringilla. Cras
+                        mattis consectetur purus sit amet fermentum. Cras justo
+                        odio, dapibus ac facilisis in, egestas eget quam. Morbi
+                        leo risus, porta ac consectetur ac, vestibulum at eros.
+                        Praesent commodo cursus magna, vel scelerisque nisl
+                        consectetur et. Vivamus sagittis lacus vel augue laoreet
+                        rutrum faucibus dolor auctor. Aenean lacinia bibendum
+                        nulla sed consectetur. Praesent commodo cursus magna,
+                        vel scelerisque nisl consectetur et. Donec sed odio dui.
+                        Donec ullamcorper nulla non metus auctor fringilla. Cras
+                        mattis consectetur purus sit amet fermentum. Cras justo
+                        odio, dapibus ac facilisis in, egestas eget quam. Morbi
+                        leo risus, porta ac consectetur ac, vestibulum at eros.
+                        Praesent commodo cursus magna, vel scelerisque nisl
+                        consectetur et. Vivamus sagittis lacus vel augue laoreet
+                        rutrum faucibus dolor auctor. Aenean lacinia bibendum
+                        nulla sed consectetur. Praesent commodo cursus magna,
+                        vel scelerisque nisl consectetur et. Donec sed odio dui.
+                        Donec ullamcorper nulla non metus auctor fringilla.
+                      </div>
+
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <h3
+                  className="section-subheading"
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "bold",
+                    color: "#fff",
+                  }}
+                >
+                  Veuillez lire le réglement interieur du daara avant votre
+                  adhésion !
+                </h3>
                 <h2 className="section-heading text-uppercase">
                   Contactez nous !
                 </h2>
+
                 <h3
                   className="section-subheading text-muted"
                   style={{ fontSize: "25px", fontWeight: "bold" }}
@@ -491,55 +651,62 @@ class MainApp extends Component {
             </div>
             <div className="row">
               <div className="col-lg-12">
-                <form
-                  id="contactForm"
-                  name="sentMessage"
-                  noValidate="novalidate"
-                >
+                <form onSubmit={this.onSubmit}>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
                         <input
                           className="form-control"
-                          id="name"
                           type="text"
+                          name="firstname"
+                          onChange={this.onChange}
+                          value={firstname}
+                          placeholder="Votre prénom *"
+                          required="required"
+                          data-validation-required-message="Le prénom est requis ."
+                        />
+                        <p className="help-block text-danger"></p>
+                      </div>
+                      <div className="form-group">
+                        <input
+                          className="form-control"
+                          type="text"
+                          name="lastname"
+                          onChange={this.onChange}
+                          value={lastname}
                           placeholder="Votre nom *"
                           required="required"
-                          data-validation-required-message="Please enter your name."
-                        />
-                        <p className="help-block text-danger"></p>
-                      </div>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          id="email"
-                          type="email"
-                          placeholder="Votre email *"
-                          required="required"
-                          data-validation-required-message="Please enter your email address."
-                        />
-                        <p className="help-block text-danger"></p>
-                      </div>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          id="phone"
-                          type="tel"
-                          placeholder="Votre téléphone"
-                          data-validation-required-message="Please enter your phone number."
+                          data-validation-required-message="Le nom est requis."
                         />
                         <p className="help-block text-danger"></p>
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <textarea
+                        <input
                           className="form-control"
-                          id="message"
-                          placeholder="Ecrivez votre message ici... *"
+                          type="number"
+                          name="phone"
+                          onChange={this.onChange}
+                          value={phone}
+                          placeholder="Votre téléphone *"
                           required="required"
-                          data-validation-required-message="Please enter a message."
-                        ></textarea>
+                          data-validation-required-message="Le numéro de téléphone est requis."
+                        />
+                        <p className="help-block text-danger"></p>
+                      </div>
+
+                      <div className="form-group">
+                        <input
+                          className="form-control"
+                          type="text"
+                          name="address"
+                          onChange={this.onChange}
+                          value={address}
+                          placeholder="Votre adresse *"
+                          required="required"
+                          data-validation-required-message="L'adresse est requis."
+                        />
                         <p className="help-block text-danger"></p>
                       </div>
                     </div>
@@ -551,7 +718,7 @@ class MainApp extends Component {
                         className="btn btn-primary btn-xl text-uppercase"
                         type="submit"
                       >
-                        Envoyez votre message !
+                        Envoyez !
                       </button>
                     </div>
                   </div>
@@ -606,4 +773,4 @@ class MainApp extends Component {
   }
 }
 
-export default MainApp;
+export default connect(null, { addSubscriber })(MainApp);

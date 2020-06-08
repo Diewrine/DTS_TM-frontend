@@ -49,6 +49,14 @@ class Alerts extends Component {
       if (message.passwordChanged) {
         alert.success(message.passwordChanged);
       }
+
+      if (message.subscriberAdded) {
+        alert.success(message.subscriberAdded);
+      }
+
+      if (message.subscriberDeleted) {
+        alert.success(message.subscriberDeleted);
+      }
     }
   }
 

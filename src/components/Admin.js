@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "./Form";
 import Members from "./Members";
+import Subscribers from "./Subscribers";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout, updatedPassword } from "../actions/authAction";
@@ -165,8 +166,8 @@ class Admin extends Component {
             </ul>
           </div>
         </nav>
-
         <div className="container">
+          <Subscribers />
           <Form />
           <Members />
         </div>
